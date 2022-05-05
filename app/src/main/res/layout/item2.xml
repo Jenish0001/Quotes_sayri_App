@@ -20,16 +20,17 @@
             android:orientation="vertical">
 
             <FrameLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
-
                 >
 
                 <ImageView
+                    android:id="@+id/Screen_View"
                     android:layout_width="match_parent"
                     android:layout_height="350dp"
                     android:scaleType="centerCrop"
-                    android:src="#393434" />
+                    android:src="@drawable/image12" />
 
                 <TextView
                     android:id="@+id/txt_item2"
@@ -37,6 +38,9 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="Hi I am jenish"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:fontFamily="@font/poppins_extralight"
                     android:textColor="@color/white" />
             </FrameLayout>
 
@@ -51,6 +55,7 @@
                     android:layout_height="match_parent">
 
                     <ImageView
+                        android:id="@+id/like_btn"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_gravity="center"
