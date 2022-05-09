@@ -1,23 +1,26 @@
-package com.example.quotes_sayri_app;
+package com.example.quotes_sayri_app.Home_Screen;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.quotes_sayri_app.Controller.My_Rv_Adpter;
 import com.example.quotes_sayri_app.Controller.My_Rv_Adpter1;
-import com.example.quotes_sayri_app.Home_Screen.MainActivity;
 import com.example.quotes_sayri_app.Model.Model_class;
+import com.example.quotes_sayri_app.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class Sayri extends AppCompatActivity {
 
@@ -36,26 +39,12 @@ public class Sayri extends AppCompatActivity {
     String[] leadership;
     String[] science;
     String[] sport;
-    int[] swicth_img={
-    R.drawable.imge1,
-            R.drawable.image12,
-            R.drawable.imge3,
-            R.drawable.imge4,
-            R.drawable.imge5,
-            R.drawable.image6,
-            R.drawable.image7,
-            R.drawable.image9,
-            R.drawable.imge1,
-            R.drawable.imag10,
-            R.drawable.img11,
-            R.drawable.imge1,
-    };
-
-
+    int[] swicth_img;
 
     List<Model_class> l2 = new ArrayList<>();
     private TextView title_text;
     private ImageView left_arrow;
+    private TextToSpeech textToSpeech;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,11 +54,6 @@ public class Sayri extends AppCompatActivity {
         blinding();
         title = getIntent().getStringExtra("n1");
         title_text.setText(title);
-        for(int i=0;i< swicth_img.length;i++)
-        {
-            Model_class m1=new Model_class(swicth_img[i]);
-            l2.add(m1);
-        }
 
         left_arrow.setOnClickListener(new View.OnClickListener() {
 
@@ -81,6 +65,31 @@ public class Sayri extends AppCompatActivity {
             }
         });
         Add_set_metod();
+        title_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                textToSpeech.speak(title_text.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+            }
+        });
+
+
+
+
+        textToSpeech =new
+
+                TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener()
+
+        {
+            @Override
+            public void onInit ( int i){
+
+                // if No error is found then only it will run
+                if (i != TextToSpeech.ERROR) {
+                    // To Choose language of speech
+                    textToSpeech.setLanguage(Locale.UK);
+                }
+            }
+        });
 
     }
 
@@ -95,6 +104,21 @@ public class Sayri extends AppCompatActivity {
     void Add_set_metod() {
 
         if (title.equals(name[0])) {
+            int[] swicth_img = {
+                    R.drawable.imge1,
+                    R.drawable.image12,
+                    R.drawable.image7,
+                    R.drawable.imge4,
+                    R.drawable.imge5,
+                    R.drawable.image6,
+                    R.drawable.image7,
+                    R.drawable.image9,
+                    R.drawable.imge1,
+                    R.drawable.imag10,
+                    R.drawable.img11,
+                    R.drawable.imge1,
+            };
+
             String[] love = {"“As he read, I fell in love the way you fall asleep: slowly, and then all at once.“"
                     , "“Loved you yesterday, love you still, always have, always will.“"
                     , "“I saw that you were perfect, and so I loved you. Then I saw that you were not perfect and I loved you even more“"
@@ -111,7 +135,7 @@ public class Sayri extends AppCompatActivity {
 
 
             for (int i = 0; i < love.length; i++) {
-                Model_class model_class = new Model_class(love[i]);
+                Model_class model_class = new Model_class(love[i], swicth_img[i]);
                 l2.add(model_class);
                 My_Rv_Adpter1 adpter = new My_Rv_Adpter1(Sayri.this, l2);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -121,9 +145,22 @@ public class Sayri extends AppCompatActivity {
             }
 
 
-        }
-        else if (title.equals(name[1])) {
+        } else if (title.equals(name[1])) {
 
+            int[] swicth_img = {
+                    R.drawable.imge1,
+                    R.drawable.image12,
+                    R.drawable.image7,
+                    R.drawable.imge4,
+                    R.drawable.imge5,
+                    R.drawable.image6,
+                    R.drawable.image7,
+                    R.drawable.image9,
+                    R.drawable.imge1,
+                    R.drawable.imag10,
+                    R.drawable.img11,
+                    R.drawable.imge1,
+            };
 
             String[] Friend = {"“A friend is one who overlooks your broken fence and admires the flowers in your garden.“"
                     , "“A good friend is like a four-leaf clover: hard to find and lucky to have.“"
@@ -141,7 +178,7 @@ public class Sayri extends AppCompatActivity {
 
 
             for (int i = 0; i < Friend.length; i++) {
-                Model_class model_class = new Model_class(Friend[i]);
+                Model_class model_class = new Model_class(Friend[i], swicth_img[i]);
                 l2.add(model_class);
                 My_Rv_Adpter1 adpter = new My_Rv_Adpter1(Sayri.this, l2);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -149,8 +186,22 @@ public class Sayri extends AppCompatActivity {
                 rv_sayri.setAdapter(adpter);
             }
 
-        }
-        else if (title.equals(name[2])) {
+        } else if (title.equals(name[2])) {
+            int[] swicth_img = {
+                    R.drawable.imge1,
+                    R.drawable.image12,
+                    R.drawable.image7,
+                    R.drawable.imge4,
+                    R.drawable.imge5,
+                    R.drawable.image6,
+                    R.drawable.image7,
+                    R.drawable.image9,
+                    R.drawable.imge1,
+                    R.drawable.imag10,
+                    R.drawable.img11,
+                    R.drawable.imge1,
+            };
+
             String[] birthday = {
                     "“Hope all your birthday wishes come true!”",
                     "“It's your special day — get out there and celebrate!”",
@@ -162,23 +213,37 @@ public class Sayri extends AppCompatActivity {
                     "“Cheers on your birthday. One step closer to adult underpants.”",
                     "“Happy Birthday! You know, you don’t look that old. But then, you don’t look that young, either.”",
                     "“To quote Shakespeare: ‘Party thine ass off!’”",
-                    "“Happy birthday to someone who is forever young!”",
+//                    "“Happy birthday to someone who is forever young!”",
                     "“You look younger than ever! Happy birthday!”",
                     "“You were born, and the world became a better place.”",
-                    "“I am blessed to have a buddy like you. Happy birthday, dear friend. May your special day be loaded with happiness and love.”",
+//                    "“I am blessed to have a buddy like you. Happy birthday, dear friend. May your special day be loaded with happiness and love.”",
             };
 
 
             for (int i = 0; i < birthday.length; i++) {
-                Model_class model_class = new Model_class(birthday[i]);
+                Model_class model_class = new Model_class(birthday[i], swicth_img[i]);
                 l2.add(model_class);
                 My_Rv_Adpter1 adpter = new My_Rv_Adpter1(Sayri.this, l2);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
                 rv_sayri.setLayoutManager(layoutManager);
                 rv_sayri.setAdapter(adpter);
             }
-        }
-        else if (title.equals(name[3])) {
+        } else if (title.equals(name[3])) {
+            int[] swicth_img = {
+                    R.drawable.imge1,
+                    R.drawable.image12,
+                    R.drawable.image7,
+                    R.drawable.imge4,
+                    R.drawable.imge5,
+                    R.drawable.image6,
+                    R.drawable.image7,
+                    R.drawable.image9,
+                    R.drawable.imge1,
+                    R.drawable.imag10,
+                    R.drawable.img11,
+                    R.drawable.imge1,
+            };
+
             String[] acititude = {
                     "“Xcuse me, I found something under my shoes. Oh its your attitude.”",
                     "“When i was born..Devil said..?Oh Shit..!! Competition?”",
@@ -186,9 +251,9 @@ public class Sayri extends AppCompatActivity {
                     "“People say me bad, trust me i am the worst!!!”",
                     "“Smile in front of people who hate you Ur happiness kills them”",
                     "“Stop checking my status ! Go Get A Life :P”",
-                    "“Dont Copy My Style.”",
+//                    "“Dont Copy My Style.”",
                     "“I am who I am, Your approval is not needed”",
-                    "“Style is a reflection of your attitude and your personality.”",
+//                    "“Style is a reflection of your attitude and your personality.”",
                     "“All things are ready if our mind be so.”",
                     "“Keep moving! Nothing new to read”",
                     "“My life,My rules My Attitude!!!”",
@@ -198,15 +263,29 @@ public class Sayri extends AppCompatActivity {
 
 
             for (int i = 0; i < acititude.length; i++) {
-                Model_class model_class = new Model_class(acititude[i]);
+                Model_class model_class = new Model_class(acititude[i], swicth_img[i]);
                 l2.add(model_class);
                 My_Rv_Adpter1 adpter = new My_Rv_Adpter1(Sayri.this, l2);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
                 rv_sayri.setLayoutManager(layoutManager);
                 rv_sayri.setAdapter(adpter);
             }
-        }
-        else if (title.equals(name[4])) {
+        } else if (title.equals(name[4])) {
+            int[] swicth_img = {
+                    R.drawable.imge1,
+                    R.drawable.image12,
+                    R.drawable.image7,
+                    R.drawable.imge4,
+                    R.drawable.imge5,
+                    R.drawable.image6,
+                    R.drawable.image7,
+                    R.drawable.image9,
+                    R.drawable.imge1,
+                    R.drawable.imag10,
+                    R.drawable.img11,
+                    R.drawable.imge1,
+            };
+
             String[] alone = {
                     "“The strong man is strongest when alone.”",
                     "“Fail I alone, in words and deeds? Why, all men strive and who succeeds?”",
@@ -218,15 +297,15 @@ public class Sayri extends AppCompatActivity {
                     "“To live alone is the fate of all great souls.”",
                     "“Life could be wonderful if people would leave you alone.\n”",
                     "“Marriage is good for those who are afraid to sleep alone at night.\n”",
-                    "“If you go long enough without a bath, even the fleas will leave you alone.\n”",
-                    "“I would rather be alone and a loud voice for action than be silent.\n”",
+//                    "“If you go long enough without a bath, even the fleas will leave you alone.\n”",
+//                    "“I would rather be alone and a loud voice for action than be silent.\n”",
                     "“I want to be alone.”",
                     "“Every man must do two things alone he must do his own believing and his own dying.”",
             };
 
 
             for (int i = 0; i < alone.length; i++) {
-                Model_class model_class = new Model_class(alone[i]);
+                Model_class model_class = new Model_class(alone[i], swicth_img[i]);
                 l2.add(model_class);
                 My_Rv_Adpter1 adpter = new My_Rv_Adpter1(Sayri.this, l2);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -235,6 +314,22 @@ public class Sayri extends AppCompatActivity {
             }
 
         } else if (title.equals(name[5])) {
+            int[] swicth_img = {
+                    R.drawable.imge1,
+                    R.drawable.image12,
+                    R.drawable.image7,
+                    R.drawable.imge4,
+                    R.drawable.imge5,
+                    R.drawable.image6,
+                    R.drawable.image7,
+                    R.drawable.image9,
+                    R.drawable.imge1,
+                    R.drawable.imag10,
+                    R.drawable.img11,
+                    R.drawable.imge1,
+            };
+
+
             String[] failure = {
                     "“Failure is only the opportunity to begin again more intelligently.”",
                     "“The only risk of failure is promotion.”",
@@ -248,13 +343,13 @@ public class Sayri extends AppCompatActivity {
                     "“I am facing the most difficult thing of my life my own greatest failure.”",
                     "“There are no mistakes, save one: the failure to learn from a mistake.”",
                     "“Turn your scars into stars”",
-                    "“Who has never tasted what is bitter does not know what is sweet.”",
-                    "“Success is the ability to go from failure to failure without losing your enthusiasm.”",
+//                    "“Who has never tasted what is bitter does not know what is sweet.”",
+//                    "“Success is the ability to go from failure to failure without losing your enthusiasm.”",
             };
 
 
             for (int i = 0; i < failure.length; i++) {
-                Model_class model_class = new Model_class(failure[i]);
+                Model_class model_class = new Model_class(failure[i], swicth_img[i]);
                 l2.add(model_class);
                 My_Rv_Adpter1 adpter = new My_Rv_Adpter1(Sayri.this, l2);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -262,11 +357,26 @@ public class Sayri extends AppCompatActivity {
                 rv_sayri.setAdapter(adpter);
             }
         } else if (title.equals(name[6])) {
+            int[] swicth_img = {
+                    R.drawable.imge1,
+                    R.drawable.image12,
+                    R.drawable.image7,
+                    R.drawable.imge4,
+                    R.drawable.imge5,
+                    R.drawable.image6,
+                    R.drawable.image7,
+                    R.drawable.image9,
+                    R.drawable.imge1,
+                    R.drawable.imag10,
+                    R.drawable.img11,
+                    R.drawable.imge1,
+            };
+
             String[] god = {
                     "“I hate you, God. I hate you as though you actually exist.”",
                     "“Every man for himself and God for us all.”",
-                    "“The Lord is my light and my salvation; whom shall I fear? The Lord is the strength of my life; of whom shall I be afraid?”",
-                    "“The dice of God are always loaded.”",
+//                    "“The Lord is my light and my salvation; whom shall I fear? The Lord is the strength of my life; of whom shall I be afraid?”",
+//                    "“The dice of God are always loaded.”",
                     "“Thank god my wife is neither a Serb nor a Jew.”",
                     "“I am responsible only to God and history.”",
                     "“Bless yourself first before expecting God to bless you.”",
@@ -281,7 +391,7 @@ public class Sayri extends AppCompatActivity {
 
 
             for (int i = 0; i < god.length; i++) {
-                Model_class model_class = new Model_class(god[i]);
+                Model_class model_class = new Model_class(god[i], swicth_img[i]);
                 l2.add(model_class);
                 My_Rv_Adpter1 adpter = new My_Rv_Adpter1(Sayri.this, l2);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -289,14 +399,29 @@ public class Sayri extends AppCompatActivity {
                 rv_sayri.setAdapter(adpter);
             }
         } else if (title.equals(name[7])) {
+            int[] swicth_img = {
+                    R.drawable.imge1,
+                    R.drawable.image12,
+                    R.drawable.image7,
+                    R.drawable.imge4,
+                    R.drawable.imge5,
+                    R.drawable.image6,
+                    R.drawable.image7,
+                    R.drawable.image9,
+                    R.drawable.imge1,
+                    R.drawable.imag10,
+                    R.drawable.img11,
+                    R.drawable.imge1,
+            };
+
             String[] power = {
                     "“Words, without power, is mere philosophy.”",
                     "“What is evil?-Whatever springs from weakness. ”",
                     "“The past cannot be changed. The future is yet in your power. ”",
                     "“Next to the assumption of power is the responsibility of relinquishing it.”",
                     "“Power corrupts, and absolute power corrupts absolutely.”",
-                    "“I believe the root of all evil is abuse of power.”",
-                    "“The greatest power is not money power, but political power.”",
+//                    "“I believe the root of all evil is abuse of power.”",
+//                    "“The greatest power is not money power, but political power.”",
                     "“Do the thing and you will have the power. But they that do not the thing, had not the power.”",
                     "“You can get more with a kind word and a gun than you can with a kind word alone.”",
                     "“Power is always dangerous. Power attracts the worst and corrupts the best.”",
@@ -308,7 +433,7 @@ public class Sayri extends AppCompatActivity {
 
 
             for (int i = 0; i < power.length; i++) {
-                Model_class model_class = new Model_class(power[i]);
+                Model_class model_class = new Model_class(power[i], swicth_img[i]);
                 l2.add(model_class);
                 My_Rv_Adpter1 adpter = new My_Rv_Adpter1(Sayri.this, l2);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -316,6 +441,21 @@ public class Sayri extends AppCompatActivity {
                 rv_sayri.setAdapter(adpter);
             }
         } else if (title.equals(name[8])) {
+            int[] swicth_img = {
+                    R.drawable.imge1,
+                    R.drawable.image12,
+                    R.drawable.image7,
+                    R.drawable.imge4,
+                    R.drawable.imge5,
+                    R.drawable.image6,
+                    R.drawable.image7,
+                    R.drawable.image9,
+                    R.drawable.imge1,
+                    R.drawable.imag10,
+                    R.drawable.img11,
+                    R.drawable.imge1,
+            };
+
             String[] experience = {
                     "“I did not tell half of what I saw, for I knew I would not be believed.”",
                     "“Experience comprises illusions lost, rather than wisdom gained.”",
@@ -327,15 +467,15 @@ public class Sayri extends AppCompatActivity {
                     "“Nothing is a waste of time if you use the experience wisely.”",
                     "“My ultimate aim is to make euthanasia a positive experience.”",
                     "“Skill is the unified force of experience, intellect and passion in their operation.”",
-                    "“Experience is a jewel, and it had need be so, for it is often purchased at an infinite rate.”",
-                    "“He who has been bitten by a snake fears a piece of string.”",
+//                    "“Experience is a jewel, and it had need be so, for it is often purchased at an infinite rate.”",
+//                    "“He who has been bitten by a snake fears a piece of string.”",
                     "“People never learn anything by being told they have to find out for themselves.”",
                     "“Experience is like a comb that life gives you when you are bald.”",
             };
 
 
             for (int i = 0; i < experience.length; i++) {
-                Model_class model_class = new Model_class(experience[i]);
+                Model_class model_class = new Model_class(experience[i], swicth_img[i]);
                 l2.add(model_class);
                 My_Rv_Adpter1 adpter = new My_Rv_Adpter1(Sayri.this, l2);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -343,6 +483,21 @@ public class Sayri extends AppCompatActivity {
                 rv_sayri.setAdapter(adpter);
             }
         } else if (title.equals(name[9])) {
+            int[] swicth_img = {
+                    R.drawable.imge1,
+                    R.drawable.image12,
+                    R.drawable.image7,
+                    R.drawable.imge4,
+                    R.drawable.imge5,
+                    R.drawable.image6,
+                    R.drawable.image7,
+                    R.drawable.image9,
+                    R.drawable.imge1,
+                    R.drawable.imag10,
+                    R.drawable.img11,
+                    R.drawable.imge1,
+            };
+
             String[] leadership = {
                     "“Leadership is an opportunity to serve. It is not a trumpet call to self-importance.”",
                     "“Show me the leader and I will know his men. Show me the men and I will know their leader.”",
@@ -351,8 +506,8 @@ public class Sayri extends AppCompatActivity {
                     "“When you accept a leadership role you take on extra responsibility for your actions toward others.”",
                     "“Good leadership consists of showing average people how to do the work of superior people.”",
                     "“A good leader takes a little more than his share of the blame, a little less than his share of the credit.”",
-                    "“Leadership is action, not position.”",
-                    "“Leadership demands that we make tough choices.”",
+//                    "“Leadership is action, not position.”",
+//                    "“Leadership demands that we make tough choices.”",
                     "“People ask the difference between a leader and a boss. The leader leads, and the boss drives.”",
                     "“The only safe ship in a storm is leadership.”",
                     "“Reason and judgment are the qualities of a leader.”",
@@ -362,7 +517,7 @@ public class Sayri extends AppCompatActivity {
 
 
             for (int i = 0; i < leadership.length; i++) {
-                Model_class model_class = new Model_class(leadership[i]);
+                Model_class model_class = new Model_class(leadership[i], swicth_img[i]);
                 l2.add(model_class);
                 My_Rv_Adpter1 adpter = new My_Rv_Adpter1(Sayri.this, l2);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -370,6 +525,21 @@ public class Sayri extends AppCompatActivity {
                 rv_sayri.setAdapter(adpter);
             }
         } else if (title.equals(name[10])) {
+            int[] swicth_img = {
+                    R.drawable.imge1,
+                    R.drawable.image12,
+                    R.drawable.image7,
+                    R.drawable.imge4,
+                    R.drawable.imge5,
+                    R.drawable.image6,
+                    R.drawable.image7,
+                    R.drawable.image9,
+                    R.drawable.imge1,
+                    R.drawable.imag10,
+                    R.drawable.img11,
+                    R.drawable.imge1,
+            };
+
             String[] science = {
                     "“However, the word madda in modern Hebrew specifically means science.”",
                     "“The whole of science is nothing more than a refinement of everyday thinking.”",
@@ -381,15 +551,15 @@ public class Sayri extends AppCompatActivity {
                     "“Everywhere you look in science, the harder it becomes to understand the universe without God.”",
                     "“Man lives for science as well as bread.”",
                     "“Science is always wrong, it never solves a problem without creating ten more.”",
-                    "“There is a point at which methods devour themselves.”",
-                    "“I am dying with the help of too many physicians.”",
+//                    "“There is a point at which methods devour themselves.”",
+//                    "“I am dying with the help of too many physicians.”",
                     "“Science is what you know, philosophy is what you don't know.”",
                     "“Science is the systematic classification of experience.”",
             };
 
 
             for (int i = 0; i < science.length; i++) {
-                Model_class model_class = new Model_class(science[i]);
+                Model_class model_class = new Model_class(science[i], swicth_img[i]);
                 l2.add(model_class);
                 My_Rv_Adpter1 adpter = new My_Rv_Adpter1(Sayri.this, l2);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -397,14 +567,29 @@ public class Sayri extends AppCompatActivity {
                 rv_sayri.setAdapter(adpter);
             }
         } else if (title.equals(name[11])) {
+            int[] swicth_img = {
+                    R.drawable.imge1,
+                    R.drawable.image12,
+                    R.drawable.image7,
+                    R.drawable.imge4,
+                    R.drawable.imge5,
+                    R.drawable.image6,
+                    R.drawable.image7,
+                    R.drawable.image9,
+                    R.drawable.imge1,
+                    R.drawable.imag10,
+                    R.drawable.img11,
+                    R.drawable.imge1,
+            };
+
             String[] sport = {
                     "“Never let a win get to your head, or a loss to your heart.”",
                     "“You can't win unless you learn how to lose.”",
                     "“Sports are a microcosm of society.”",
                     "“When I did sports cartoons, I used to uh, go to fights.”",
                     "“I wanted to be a doctor in sports medicine; I was into sailing and all that sort of thing.”",
-                    "“Adversity causes some men to break; others to break records.”",
-                    "“A lifetime of training for just ten seconds.”",
+//                    "“Adversity causes some men to break; others to break records.”",
+//                    "“A lifetime of training for just ten seconds.”",
                     "“Just play. Have fun. Enjoy the game.”",
                     "“Two things only the people anxiously desire, bread and the Circus games.”",
                     "“I have the impression that cycling is no longer a game but rather an employment… a job.”",
@@ -416,7 +601,7 @@ public class Sayri extends AppCompatActivity {
 
 
             for (int i = 0; i < sport.length; i++) {
-                Model_class model_class = new Model_class(sport[i]);
+                Model_class model_class = new Model_class(sport[i], swicth_img[i]);
                 l2.add(model_class);
                 My_Rv_Adpter1 adpter = new My_Rv_Adpter1(Sayri.this, l2);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -428,4 +613,23 @@ public class Sayri extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_item, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.refesh_btn:
+                Toast.makeText(this, "Refesh", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.setting_btn:
+                Toast.makeText(this, "setting", Toast.LENGTH_SHORT).show();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

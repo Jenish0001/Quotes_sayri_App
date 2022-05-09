@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="365dp"
+    android:layout_width="370dp"
     android:layout_height="420dp"
     android:layout_marginLeft="13dp"
     android:gravity="center"
@@ -9,8 +9,9 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_sayri"
-        android:layout_width="match_parent"
+        android:layout_width="365dp"
         android:layout_height="400dp"
+        app:cardElevation="4dp"
         app:cardCornerRadius="10dp"
         >
 
@@ -40,6 +41,7 @@
                     android:text="Hi I am jenish"
                     android:textStyle="bold"
                     android:textSize="20dp"
+                    android:padding="20dp"
                     android:fontFamily="@font/poppins_extralight"
                     android:textColor="@color/white" />
             </FrameLayout>
@@ -74,6 +76,7 @@
 
                 <LinearLayout
                     android:layout_width="100dp"
+                    android:id="@+id/download"
                     android:layout_height="match_parent">
 
                     <ImageView
@@ -95,9 +98,12 @@
 
                 <LinearLayout
                     android:layout_width="80dp"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:id="@+id/copy_btn"
+                    >
 
                     <ImageView
+
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_gravity="center"
@@ -119,6 +125,7 @@
                     android:layout_height="match_parent">
 
                     <ImageView
+                        android:id="@+id/share_btn"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_gravity="center"
@@ -126,6 +133,7 @@
                         android:src="@drawable/ic_baseline_share_24" />
 
                     <TextView
+                        android:id="@+id/song_btn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"

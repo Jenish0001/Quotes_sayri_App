@@ -1,29 +1,49 @@
 package com.example.quotes_sayri_app.Model;
 
 public class Model_class {
-
-    public int getImge() {
-        return imge;
-    }
-
-
-    int imge;
+    String s;
+    int i;
     String name;
     int img;
     int set_img;
-    String love;
-    int switch_img;
+    int l;
 
-    public int getSwitch_img() {
-        return switch_img;
+    public Model_class(String s, int i) {
+
+        this.s = s;
+        this.i = i;
+
     }
 
-    public void setSwitch_img(int switch_img) {
-        this.switch_img = switch_img;
+    public int getL() {
+        return l;
     }
 
-    public Model_class() {
+    public void setL(int l) {
+        this.l = l;
+    }
 
+    public Model_class(String name, int img, int set_img , int l) {
+        this.name = name;
+        this.img = img;
+        this.set_img = set_img;
+        this.l=l;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getImg() {
+        return img;
+    }
+
+    public void setImg(int img) {
+        this.img = img;
     }
 
     public int getSet_img() {
@@ -34,46 +54,19 @@ public class Model_class {
         this.set_img = set_img;
     }
 
-    public Model_class(String name, int img, int set_img) {
-        this.name = name;
-        this.img = img;
-        this.set_img = set_img;
-
-
+    public String getS() {
+        return s;
     }
 
-    public Model_class(String love,int switch_img) {
-        this.love = love;
-        this.switch_img=  switch_img;
+    public void setS(String s) {
+        this.s = s;
     }
 
-
-    public String getLove() {
-        return love;
+    public int getI() {
+        return i;
     }
 
-    public void setLove(String love) {
-        this.love = love;
-    }
-
-    public String getName() {
-
-        return name;
-    }
-
-    void setName(String name) {
-
-        this.name = name;
-    }
-
-
-    public int getImg() {
-        return img;
-
-    }
-
-    public void setImg(int img) {
-        this.img = img;
-
+    public void setI(int i) {
+        this.i = i;
     }
 }

@@ -2,12 +2,9 @@ package com.example.quotes_sayri_app.Home_Screen;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Switch;
 
 import com.example.quotes_sayri_app.Controller.My_Rv_Adpter;
 import com.example.quotes_sayri_app.Model.Model_class;
@@ -25,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     int[] img = {R.drawable.imge1,
             R.drawable.image12,
-            R.drawable.imge3,
+            R.drawable.image7,
             R.drawable.imge4,
             R.drawable.imge5,
             R.drawable.image6,
@@ -52,6 +49,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     };
+    int[] l={
+            R.drawable.ic_baseline_favorite_border_24,
+            R.drawable.ic_launcher_background
+
+    };
 
     List<Model_class> l1 = new ArrayList<>();
 
@@ -72,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     void recycleviewadpter() {
 
         for (int i = 0; i < name.length; i++) {
-            Model_class model_class = new Model_class(name[i], img[i],set_img[i]);
+            Model_class model_class = new Model_class(name[i], img[i],set_img[i],l[0]);
             l1.add(model_class);
         }
 

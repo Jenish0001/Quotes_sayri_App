@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.quotes_sayri_app" >
 
+    package="com.example.quotes_sayri_app" >
+    <uses-permission android:name="android.permission.READ_VOICEMAIL"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Quotes_sayri_App" >
         <activity
-            android:name=".Sayri"
+            android:name=".Home_Screen.Sayri"
             android:exported="false" />
         <activity
             android:name=".Home_Screen.MainActivity"

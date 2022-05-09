@@ -4,11 +4,18 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android devloper/Quotes_sayri_App/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.13" />
+        <entry key="..\:/Android devloper/Quotes_sayri_App/app/src/main/res/drawable/ic_baseline_content_copy_24.xml" value="0.1" />
+        <entry key="..\:/Android devloper/Quotes_sayri_App/app/src/main/res/drawable/ic_baseline_favorite_24_1.xml" value="0.13" />
+        <entry key="..\:/Android devloper/Quotes_sayri_App/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.1" />
+        <entry key="..\:/Android devloper/Quotes_sayri_App/app/src/main/res/drawable/ic_baseline_file_download_24.xml" value="0.1" />
+        <entry key="..\:/Android devloper/Quotes_sayri_App/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.1" />
         <entry key="..\:/Android devloper/Quotes_sayri_App/app/src/main/res/drawable/ic_baseline_segment.xml" value="0.1715" />
+        <entry key="..\:/Android devloper/Quotes_sayri_App/app/src/main/res/drawable/ic_baseline_segment_24.xml" value="0.1" />
         <entry key="..\:/Android devloper/Quotes_sayri_App/app/src/main/res/layout/activity_main.xml" value="0.15526315789473685" />
-        <entry key="..\:/Android devloper/Quotes_sayri_App/app/src/main/res/layout/activity_sayri.xml" value="0.22" />
+        <entry key="..\:/Android devloper/Quotes_sayri_App/app/src/main/res/layout/activity_sayri.xml" value="0.10666666666666667" />
         <entry key="..\:/Android devloper/Quotes_sayri_App/app/src/main/res/layout/item.xml" value="0.14666666666666667" />
-        <entry key="..\:/Android devloper/Quotes_sayri_App/app/src/main/res/layout/item2.xml" value="0.13333333333333333" />
+        <entry key="..\:/Android devloper/Quotes_sayri_App/app/src/main/res/layout/item2.xml" value="0.22" />
+        <entry key="..\:/Android devloper/Quotes_sayri_App/app/src/main/res/menu/menu_item.xml" value="0.15128205128205127" />
       </map>
     </option>
   </component>

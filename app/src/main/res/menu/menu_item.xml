@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/refesh_btn"
+        android:title="Refesh" />
+    <item
+        android:id="@+id/setting_btn"
+        android:title="setting" />
+
+</menu>

@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.quotes_sayri_app.Home_Screen.MainActivity;
 import com.example.quotes_sayri_app.Model.Model_class;
 import com.example.quotes_sayri_app.R;
-import com.example.quotes_sayri_app.Sayri;
+import com.example.quotes_sayri_app.Home_Screen.Sayri;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,6 @@ public class My_Rv_Adpter extends RecyclerView.Adapter<My_Rv_Adpter.ViewData> {
     String[] name;
     int[] imge; List<Model_class> l1 = new ArrayList<>();
 
-
     public My_Rv_Adpter(MainActivity mainActivity, List<Model_class> l1) {
         activity = mainActivity;
         this.name = name;
@@ -34,6 +33,7 @@ public class My_Rv_Adpter extends RecyclerView.Adapter<My_Rv_Adpter.ViewData> {
         this.imge = imge;
 
     }
+
     @NonNull
     @Override
     public ViewData onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -60,9 +60,7 @@ public class My_Rv_Adpter extends RecyclerView.Adapter<My_Rv_Adpter.ViewData> {
             }
         });
 
-
     }
-
 
     @Override
     public int getItemCount() {
@@ -84,6 +82,7 @@ public class My_Rv_Adpter extends RecyclerView.Adapter<My_Rv_Adpter.ViewData> {
             image_item = itemView.findViewById(R.id.image_item);
             card_view = itemView.findViewById(R.id.card_view);
             set_icon=itemView.findViewById(R.id.set_icon);
+
         }
     }
 

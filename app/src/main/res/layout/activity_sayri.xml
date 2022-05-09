@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Sayri">
+    tools:context=".Home_Screen.Sayri">
 
     <LinearLayout
         android:layout_width="match_parent"
