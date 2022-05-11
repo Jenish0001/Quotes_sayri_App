@@ -4,11 +4,19 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.content.ContentResolver;
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -16,12 +24,16 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.motion.widget.FloatLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quotes_sayri_app.Model.Model_class;
 import com.example.quotes_sayri_app.R;
 import com.example.quotes_sayri_app.Home_Screen.Sayri;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -132,11 +144,17 @@ public class My_Rv_Adpter1 extends RecyclerView.Adapter<My_Rv_Adpter1.ViewData> 
             @Override
             public void onClick(View view) {
 
+                holder.fram_img.setDrawingCacheEnabled(true);
+                Bitmap bitamp = holder.fram_img.getDrawingCache();
+                try {
+                    saveBitmap(activity,bitamp, Bitmap.CompressFormat.PNG,"image/*","newimg.png");
+                }catch(Exception e) {
+
+                }
+
                 Toast.makeText(activity, "  Download  ", Toast.LENGTH_SHORT).show();
             }
         });
-
-
 
 
         textToSpeech = new
@@ -176,6 +194,7 @@ public class My_Rv_Adpter1 extends RecyclerView.Adapter<My_Rv_Adpter1.ViewData> 
         private final TextView song_btn;
         private final ImageView share_btn;
         private final LinearLayout download;
+        private final FrameLayout fram_img;
 
         public ViewData(@NonNull View itemView) {
             super(itemView);
@@ -187,6 +206,49 @@ public class My_Rv_Adpter1 extends RecyclerView.Adapter<My_Rv_Adpter1.ViewData> 
             song_btn = itemView.findViewById(R.id.song_btn);
             share_btn = itemView.findViewById(R.id.share_btn);
             download = itemView.findViewById(R.id.download);
+            fram_img = itemView.findViewById(R.id.fram_img);
+        }
+    }
+
+
+    @NonNull
+    public Uri saveBitmap(@NonNull final Context context, @NonNull final Bitmap bitmap, @NonNull final Bitmap.CompressFormat format, @NonNull final String mimeType, @NonNull final String displayName) throws IOException {
+
+        final String relativeLocation = Environment.DIRECTORY_DCIM + File.separator + "PhotoMaker";
+        final ContentValues values = new ContentValues();
+        values.put(MediaStore.MediaColumns.DISPLAY_NAME, displayName);
+        values.put(MediaStore.MediaColumns.MIME_TYPE, mimeType);
+        values.put(MediaStore.MediaColumns.RELATIVE_PATH, relativeLocation);
+
+        final ContentResolver resolver = context.getContentResolver();
+        Uri uri = null;
+
+        try {
+            final Uri contentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+            uri = resolver.insert(contentUri, values);
+
+            if (uri == null)
+                throw new IOException("Failed to create new MediaStore record.");
+
+            try (final OutputStream stream = resolver.openOutputStream(uri)) {
+                if (stream == null)
+                    throw new IOException("Failed to open output stream.");
+
+                if (!bitmap.compress(format, 95, stream))
+                    throw new IOException("Failed to save bitmap.");
+            }
+
+            Toast.makeText(context, "" + uri, Toast.LENGTH_SHORT).show();
+
+            return uri;
+        } catch (IOException e) {
+
+            if (uri != null) {
+                // Don't leave an orphan entry in the MediaStore
+                resolver.delete(uri, null, null);
+            }
+
+            throw e;
         }
     }
 }

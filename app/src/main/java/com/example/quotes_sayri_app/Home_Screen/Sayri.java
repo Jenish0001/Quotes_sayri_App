@@ -152,7 +152,7 @@ public class Sayri extends AppCompatActivity {
                     R.drawable.image12,
                     R.drawable.image7,
                     R.drawable.imge4,
-                    R.drawable.imge5,
+                       R.drawable.imge5,
                     R.drawable.image6,
                     R.drawable.image7,
                     R.drawable.image9,
