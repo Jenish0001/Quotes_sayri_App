@@ -24,12 +24,11 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.motion.widget.FloatLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.quotes_sayri_app.Home_Screen.Sayri;
 import com.example.quotes_sayri_app.Model.Model_class;
 import com.example.quotes_sayri_app.R;
-import com.example.quotes_sayri_app.Home_Screen.Sayri;
 
 import java.io.File;
 import java.io.IOException;
@@ -131,11 +130,29 @@ public class My_Rv_Adpter1 extends RecyclerView.Adapter<My_Rv_Adpter1.ViewData> 
             @Override
             public void onClick(View view) {
 
-                Intent shareIntent = new Intent(Intent.ACTION_SEND);
-                shareIntent.setType("text/plain");
+//                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+//                shareIntent.setType("text/plain");
 //                shareIntent.putExtra(Intent.EXTRA_TEXT, "http://codepath.com");
-                activity.startActivity(shareIntent);
-                Toast.makeText(activity, "  Share  ", Toast.LENGTH_SHORT).show();
+//                activity.startActivity(shareIntent);
+//                ArrayList<Uri> imageUris = new ArrayList<Uri>();
+//                Intent sendIntent = new Intent();
+//                sendIntent.setAction(Intent.ACTION_SEND);
+//                sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
+//                sendIntent.setType("text/plain");
+//                sendIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, imageUris);
+//                sendIntent.setType("image/*");
+//                Intent shareIntent = Intent.createChooser(sendIntent, null);
+//                activity.startActivity(shareIntent);
+
+//                imageUris.add(imageUri1); // Add your image URIs here
+//                imageUris.add(imageUri2);
+
+//                Intent shareIntent = new Intent();
+//                shareIntent.setAction(Intent.ACTION_SEND_MULTIPLE);
+//
+//                activity.startActivity(Intent.createChooser(shareIntent, null));
+
+
             }
         });
 
@@ -147,8 +164,8 @@ public class My_Rv_Adpter1 extends RecyclerView.Adapter<My_Rv_Adpter1.ViewData> 
                 holder.fram_img.setDrawingCacheEnabled(true);
                 Bitmap bitamp = holder.fram_img.getDrawingCache();
                 try {
-                    saveBitmap(activity,bitamp, Bitmap.CompressFormat.PNG,"image/*","newimg.png");
-                }catch(Exception e) {
+                    saveBitmap(activity, bitamp, Bitmap.CompressFormat.PNG, "image/*", "newimg.png");
+                } catch (Exception e) {
 
                 }
 

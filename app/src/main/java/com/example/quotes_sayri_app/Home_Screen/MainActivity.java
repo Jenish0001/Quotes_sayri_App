@@ -64,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
         blinding();
         recycleviewadpter();
 
-
     }
 
     private void blinding() {
