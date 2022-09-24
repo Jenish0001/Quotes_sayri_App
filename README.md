@@ -1,7 +1,7 @@
 # Quotes_sayri_App
 
 - using sqil Database 
-- multiple 
+- multiple Quotes
 
 <p float="center"> 
 <img src="https://user-images.githubusercontent.com/101552010/192108185-c18bad74-bcbe-4d65-8bad-812e610f9a7a.png" width=22% height=35%>
